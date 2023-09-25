@@ -1,3 +1,5 @@
+[![Docker](https://github.com/archisgore/rust-dev-env/actions/workflows/docker-publish.yml/badge.svg)](https://github.com/archisgore/rust-dev-env/actions/workflows/docker-publish.yml)
+
 # rust-dev-env
 Rust Development Environment docker container (based on clux/muslrust for static builds)
 
