@@ -9,5 +9,6 @@ RUN rustup component add clippy && \
     cargo install twiggy && \
     cargo install cargo-all-features && \
     cargo install sccache && \
+    cargo install cargo-edit && \
     apt-get update -y && \
     apt-get install -y vim
