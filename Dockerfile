@@ -17,3 +17,7 @@ RUN env -u OPENSSL_DIR -u OPENSSL_STATIC -u PKG_CONFIG_PATH -u PKG_CONFIG_ALL_ST
     cargo install --locked cargo-all-features && \
     cargo install --locked sccache && \
     cargo install --locked cargo-edit'
+
+# The base image ships protoc in /usr/local/bin (first on PATH) without the well-known
+# .proto files; point prost/tonic builds at the ones from libprotobuf-dev.
+ENV PROTOC_INCLUDE=/usr/include
