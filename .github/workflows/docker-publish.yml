@@ -68,3 +68,16 @@ jobs:
           docker tag $IMAGE_ID $IMAGE_ID:$VERSION
           docker push $IMAGE_ID
           docker push $IMAGE_ID:$VERSION
+  # GitHub disables scheduled workflows after 60 days without repository activity.
+  # Re-enabling this workflow via the API on every scheduled run keeps the monthly
+  # rebuild alive indefinitely.
+  keepalive:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+    permissions:
+      actions: write
+    steps:
+      - name: Keep scheduled workflow enabled
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X PUT "repos/${{ github.repository }}/actions/workflows/docker-publish.yml/enable"
