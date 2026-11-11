@@ -4,11 +4,11 @@ FROM clux/muslrust:stable
 RUN rustup component add clippy && \
     rustup component add rustfmt && \
     rustup install nightly-x86_64-unknown-linux-gnu && \
-    cargo install cargo-bloat && \
-    cargo install cargo-udeps --locked && \
-    cargo install twiggy && \
-    cargo install cargo-all-features && \
-    cargo install sccache && \
-    cargo install cargo-edit && \
+    cargo install --locked cargo-bloat && \
+    cargo install --locked cargo-udeps && \
+    cargo install --locked twiggy && \
+    cargo install --locked cargo-all-features && \
+    cargo install --locked sccache && \
+    cargo install --locked cargo-edit && \
     apt-get update -y && \
     apt-get install -y vim
